@@ -28,7 +28,7 @@
       <%= yield %>
     <% else %>
       <% if user_signed_in? %>
-        <%= render Navbar::Component.new %>
+        <%= render Header::Component.new %>
       <% end %>
 
       <main class="container mx-auto px-4 py-8">
