@@ -49,8 +49,14 @@ gem "thruster", require: false
 gem "image_processing", "~> 1.2"
 
 group :development, :test do
-  # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
-  gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
+  # RSpec testing framework [https://rspec.info/]
+  gem "rspec-rails"
+
+  # Factory Bot for test data [https://github.com/thoughtbot/factory_bot_rails]
+  gem "factory_bot_rails"
+
+  # Faker for generating fake data [https://github.com/faker-ruby/faker]
+  gem "faker"
 
   # Audits gems for known security defects (use config/bundler-audit.yml to ignore issues)
   gem "bundler-audit", require: false
@@ -68,7 +74,13 @@ group :development do
 end
 
 group :test do
-  # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
+  # Use system testing with Capybara
   gem "capybara"
   gem "selenium-webdriver"
+
+  # Matchers and helpers for RSpec [https://github.com/thoughtbot/shoulda-matchers]
+  gem "shoulda-matchers"
+
+  # Database cleaner for test isolation [https://github.com/DatabaseCleaner/database_cleaner]
+  gem "database_cleaner-active_record"
 end
