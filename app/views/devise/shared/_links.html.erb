@@ -1,0 +1,15 @@
+<div class="space-y-2">
+  <%- if controller_name != 'sessions' %>
+    <p class="text-gray-600">
+      <%= t('.sign_in_prompt') %>
+      <%= link_to t('.sign_in_link'), new_session_path(resource_name), class: "font-medium text-blue-600 hover:text-blue-700" %>
+    </p>
+  <% end %>
+
+  <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+    <p class="text-gray-600">
+      <%= t('.sign_up_prompt') %>
+      <%= link_to t('.sign_up_link'), new_registration_path(resource_name), class: "font-medium text-blue-600 hover:text-blue-700" %>
+    </p>
+  <% end %>
+</div>
