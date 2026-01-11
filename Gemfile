@@ -25,6 +25,11 @@ gem "devise"
 # Load environment variables from .env file [https://github.com/bkeepers/dotenv]
 gem "dotenv-rails", groups: [ :development, :test ]
 
+# ViewComponent for building reusable, testable view components [https://viewcomponent.org/]
+gem "view_component"
+gem "view_component-contrib"
+gem "dry-initializer"
+
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 # gem "bcrypt", "~> 3.1.7"
 
