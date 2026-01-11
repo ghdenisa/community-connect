@@ -47,6 +47,7 @@ en:
         email_placeholder: "you@example.com"
         password_label: "Password"
         password_placeholder: "••••••••"
+        remember_me: "Remember me"
         submit_button: "Sign in"
 
     registrations:
