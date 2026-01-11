@@ -39,3 +39,5 @@
 
 # Ignore Claude Code documentation
 CLAUDE.md
+
+/.history
