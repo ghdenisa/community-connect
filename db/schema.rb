@@ -11,14 +11,11 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[8.1].define(version: 2026_01_12_163344) do
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "pg_catalog.plpgsql"
-
   create_table "events", force: :cascade do |t|
     t.datetime "created_at", null: false
-    t.bigint "creator_id", null: false
+    t.integer "creator_id", null: false
     t.text "description"
-    t.bigint "group_id", null: false
+    t.integer "group_id", null: false
     t.boolean "public", default: false, null: false
     t.datetime "starts_at", null: false
     t.string "title", null: false
