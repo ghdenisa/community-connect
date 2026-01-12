@@ -2,9 +2,6 @@
 # development, test). The code here should be idempotent so that it can be executed at any point in every environment.
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
 
-# Load FactoryBot for seeds
-require "factory_bot_rails"
-
 # Clear existing data (optional - comment out if you want to preserve data)
 puts "Clearing existing data..."
 Event.destroy_all
@@ -13,7 +10,7 @@ User.destroy_all
 
 # Create demo user
 puts "Creating demo user..."
-demo_user = FactoryBot.create(:user,
+demo_user = User.create!(
   email: "demo@demo.com",
   password: "123456",
   password_confirmation: "123456"
@@ -21,7 +18,7 @@ demo_user = FactoryBot.create(:user,
 puts "✓ Created user: #{demo_user.email}"
 
 puts "Creating other user..."
-other_user = FactoryBot.create(:user,
+other_user = User.create!(
   email: "other@user.com",
   password: "123456",
   password_confirmation: "123456"
@@ -54,7 +51,7 @@ groups_data = [
 ]
 
 created_groups = groups_data.map do |group_attrs|
-  group = FactoryBot.create(:group, group_attrs)
+  group = Group.create!(group_attrs)
   puts "✓ Created group: #{group.name}"
   group
 end
@@ -99,8 +96,8 @@ created_groups.each do |group|
   puts "\n  Events for #{group.name}:"
 
   events_config[group.name].each do |event_attrs|
-    # Create event using factory with specific attributes
-    event = FactoryBot.create(:event,
+    # Create event with specific attributes
+    event = Event.create!(
       group: group,
       creator: demo_user,
       title: event_attrs[:title],
@@ -112,8 +109,17 @@ created_groups.each do |group|
     puts "    ✓ #{event.title} - #{event.starts_at.strftime('%b %d, %Y at %I:%M %p')}"
   end
 
-  puts "\nCreating events for other users..."
-  FactoryBot.create_list(:event, 2, group: group, creator: other_user)
+  puts "\nCreating additional events for other users..."
+  2.times do |i|
+    Event.create!(
+      group: group,
+      creator: other_user,
+      title: "Additional Event #{i + 1} for #{group.name}",
+      description: "This is an additional event created by another user for demonstration purposes.",
+      starts_at: (17 + i).days.from_now,
+      public: [ true, false ].sample
+    )
+  end
 end
 
 
@@ -121,5 +127,5 @@ puts "Seed data created successfully!"
 puts "Demo User:"
 puts "  Email: #{demo_user.email}"
 puts "  Password: 123456"
-puts "\nGroups created: #{Group.count}"
+puts "Groups created: #{Group.count}"
 puts "Events created: #{Event.count}"
