@@ -2,6 +2,7 @@ class EventsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_group
   before_action :set_event, only: [ :edit, :update ]
+  before_action :authorize_event_creator!, only: [ :edit, :update ]
 
   def new
     @event = @group.events.build
@@ -41,5 +42,12 @@ class EventsController < ApplicationController
 
   def event_params
     params.require(:event).permit(:title, :description, :starts_at, :public)
+  end
+
+  def authorize_event_creator!
+    return if @event.creator == current_user
+
+    redirect_to group_path(@group),
+                alert: t("events.authorization.not_creator")
   end
 end

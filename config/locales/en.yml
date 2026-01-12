@@ -73,6 +73,8 @@ en:
         description: "This group hasn't created any events yet. Check back later!"
 
   events:
+    authorization:
+      not_creator: "You can only edit events that you created."
     new:
       title: "Create New Event"
       subtitle: "Create a new event for %{group}"
@@ -101,6 +103,15 @@ en:
 
   event_card:
     edit: "Edit"
+
+  activerecord:
+    errors:
+      models:
+        event:
+          attributes:
+            starts_at:
+              must_be_future: "must be in the future"
+              cannot_move_to_past: "cannot be changed to a past date"
 
   devise:
     sessions:
