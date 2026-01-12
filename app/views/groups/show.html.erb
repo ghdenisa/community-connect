@@ -1,0 +1,32 @@
+<div class="space-y-6">
+  <!-- Back Link -->
+  <div>
+    <%= link_to groups_path, class: "inline-flex items-center text-sm text-gray-600 hover:text-gray-900" do %>
+      <span class="mr-2">←</span>
+      <%= t("groups.show.back_to_groups") %>
+    <% end %>
+  </div>
+
+  <!-- Group Header -->
+  <%= render GroupCard::Component.new(group: @group) %>
+
+  <!-- Events Section -->
+  <div>
+    <h2 class="text-2xl font-bold text-gray-900 mb-4"><%= t("groups.show.events_title") %></h2>
+
+    <% if @events.any? %>
+      <div class="grid gap-4">
+        <% @events.each do |event| %>
+          <%= render EventCard::Component.new(event: event) %>
+        <% end %>
+      </div>
+    <% else %>
+      <!-- Empty State -->
+      <div class="bg-gray-50 border-2 border-dashed border-gray-300 rounded-lg p-12 text-center">
+        <span class="text-6xl">📅</span>
+        <h3 class="mt-4 text-lg font-medium text-gray-900"><%= t("groups.show.empty_state.title") %></h3>
+        <p class="mt-2 text-sm text-gray-500"><%= t("groups.show.empty_state.description") %></p>
+      </div>
+    <% end %>
+  </div>
+</div>

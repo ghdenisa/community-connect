@@ -60,6 +60,16 @@ en:
       empty_state:
         title: "No groups yet"
         description: "Check back later for new groups!"
+    show:
+      back_to_groups: "Back to Groups"
+      events_title: "Events"
+      total_events:
+        zero: "No events"
+        one: "1 event"
+        other: "%{count} events"
+      empty_state:
+        title: "No events yet"
+        description: "This group hasn't created any events yet. Check back later!"
 
   devise:
     sessions:
