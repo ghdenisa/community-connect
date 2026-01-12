@@ -99,6 +99,31 @@ RSpec.describe EventsController, type: :request do
           expect(response).to have_http_status(:unprocessable_entity)
         end
       end
+
+      context 'with past start date' do
+        let(:past_date_params) do
+          {
+            event: {
+              title: "Past Event",
+              description: "This event is in the past",
+              starts_at: 2.days.ago,
+              public: true
+            }
+          }
+        end
+
+        it 'does not create a new event' do
+          expect {
+            post group_events_path(group), params: past_date_params
+          }.not_to change(Event, :count)
+        end
+
+        it 'renders the new template with validation error' do
+          post group_events_path(group), params: past_date_params
+          expect(response).to have_http_status(:unprocessable_entity)
+          expect(response.body).to include('must be in the future')
+        end
+      end
     end
   end
 
