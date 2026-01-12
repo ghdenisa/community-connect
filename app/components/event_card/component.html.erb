@@ -1,0 +1,37 @@
+<div class="bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow p-6 <%= card_classes %>">
+  <div class="space-y-3">
+    <!-- Event Title -->
+    <h3 class="text-xl font-bold text-gray-900"><%= event.title %></h3>
+
+    <!-- Time Badge -->
+    <div>
+      <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium <%=badge_classes %>">
+        <%= time_label %>
+      </span>
+    </div>
+
+    <!-- Date and Time -->
+    <div class="flex items-center text-gray-700">
+      <span class="text-lg mr-2">📅</span>
+      <span class="text-sm"><%= formatted_date %></span>
+    </div>
+
+    <!-- Group Name -->
+    <div class="flex items-center text-gray-700">
+      <span class="text-lg mr-2">👥</span>
+      <span class="text-sm font-medium"><%= event.group.name %></span>
+    </div>
+
+    <!-- Description -->
+    <% if event.description.present? %>
+      <p class="text-gray-600 text-sm line-clamp-3"><%= truncated_description %></p>
+    <% end %>
+
+    <!-- Creator -->
+    <div class="pt-2 border-t border-gray-100">
+      <p class="text-xs text-gray-500">
+        Hosted by <%= event.creator.email %>
+      </p>
+    </div>
+  </div>
+</div>
