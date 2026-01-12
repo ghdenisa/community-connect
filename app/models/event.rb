@@ -4,6 +4,9 @@ class Event < ApplicationRecord
 
   validates :title, presence: true
   validates :starts_at, presence: true
+
+  scope :public_events, -> { where(public: true) }
+  scope :ordered_by_start_desc, -> { order(starts_at: :desc) }
 end
 
 # == Schema Information

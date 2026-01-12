@@ -41,6 +41,14 @@ en:
       town_square: "TownSquare"
       groups: "Groups"
 
+  town_square:
+    index:
+      title: "TownSquare"
+      subtitle: "Discover public events from the community"
+      empty_state:
+        title: "No public events yet"
+        description: "Check back later for new community events!"
+
   devise:
     sessions:
       new:

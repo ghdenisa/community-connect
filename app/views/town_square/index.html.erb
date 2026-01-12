@@ -1,0 +1,23 @@
+<div class="space-y-6">
+  <!-- Page Header -->
+  <div class="flex items-center justify-between">
+    <h1 class="text-3xl font-bold text-gray-900"><%= t("town_square.index.title") %></h1>
+    <p class="text-gray-600"><%= t("town_square.index.subtitle") %></p>
+  </div>
+
+  <!-- Events List -->
+  <% if @events.any? %>
+    <div class="grid gap-4">
+      <% @events.each do |event| %>
+        <%= render EventCard::Component.new(event: event) %>
+      <% end %>
+    </div>
+  <% else %>
+    <!-- Empty State -->
+    <div class="bg-gray-50 border-2 border-dashed border-gray-300 rounded-lg p-12 text-center">
+      <span class="text-6xl">🏛️</span>
+      <h3 class="mt-4 text-lg font-medium text-gray-900"><%= t("town_square.index.empty_state.title") %></h3>
+      <p class="mt-2 text-sm text-gray-500"><%= t("town_square.index.empty_state.description") %></p>
+    </div>
+  <% end %>
+</div>
