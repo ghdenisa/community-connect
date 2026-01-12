@@ -92,3 +92,5 @@ group :test do
   # Database cleaner for test isolation [https://github.com/DatabaseCleaner/database_cleaner]
   gem "database_cleaner-active_record"
 end
+
+gem "dockerfile-rails", ">= 1.7", group: :development
