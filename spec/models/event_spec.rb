@@ -33,16 +33,16 @@ RSpec.describe Event, type: :model do
     end
 
     describe '.ordered_by_start_desc' do
-      it 'orders events by start date in descending order' do
+      it 'orders events by start date with nearest events first' do
         older_event = create(:event, starts_at: 2.days.from_now)
         newer_event = create(:event, starts_at: 5.days.from_now)
         oldest_event = create(:event, starts_at: 1.day.from_now)
 
         ordered_events = Event.ordered_by_start_desc
 
-        expect(ordered_events.first).to eq(newer_event)
+        expect(ordered_events.first).to eq(oldest_event)
         expect(ordered_events.second).to eq(older_event)
-        expect(ordered_events.third).to eq(oldest_event)
+        expect(ordered_events.third).to eq(newer_event)
       end
     end
   end

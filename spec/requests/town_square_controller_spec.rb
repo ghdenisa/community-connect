@@ -39,15 +39,15 @@ RSpec.describe TownSquareController, type: :request do
         expect(response.body).not_to include("Private Group Event")
       end
 
-      it 'orders events by start date in descending order' do
+      it 'orders events with nearest events first' do
         get root_path
 
-        newer_position = response.body.index("Newer Event")
-        older_position = response.body.index("Older Event")
         oldest_position = response.body.index("Oldest Event")
+        older_position = response.body.index("Older Event")
+        newer_position = response.body.index("Newer Event")
 
-        expect(newer_position).to be < older_position
-        expect(older_position).to be < oldest_position
+        expect(oldest_position).to be < older_position
+        expect(older_position).to be < newer_position
       end
     end
   end

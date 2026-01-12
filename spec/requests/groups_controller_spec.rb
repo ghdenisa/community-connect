@@ -86,13 +86,13 @@ RSpec.describe GroupsController, type: :request do
         expect(response.body).not_to include("Other Group Event")
       end
 
-      it 'orders events by start date in descending order' do
+      it 'orders events with nearest events first' do
         get group_path(group)
 
-        event2_position = response.body.index("Event 2")
         event1_position = response.body.index("Event 1")
+        event2_position = response.body.index("Event 2")
 
-        expect(event2_position).to be < event1_position
+        expect(event1_position).to be < event2_position
       end
     end
   end
