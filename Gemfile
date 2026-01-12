@@ -76,6 +76,9 @@ end
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
+
+  # Annotate models and routes with schema information [https://github.com/drwl/annotaterb]
+  gem "annotaterb"
 end
 
 group :test do
