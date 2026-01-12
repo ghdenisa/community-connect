@@ -37,6 +37,9 @@ en:
     header:
       edit_profile: "Edit Profile"
       sign_out: "Sign Out"
+    navigation_menu:
+      town_square: "TownSquare"
+      groups: "Groups"
 
   devise:
     sessions:
