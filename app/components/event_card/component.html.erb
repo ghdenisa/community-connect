@@ -27,11 +27,16 @@
       <p class="text-gray-600 text-sm line-clamp-3"><%= truncated_description %></p>
     <% end %>
 
-    <!-- Creator -->
-    <div class="pt-2 border-t border-gray-100">
+    <!-- Creator and Actions -->
+    <div class="pt-2 border-t border-gray-100 flex items-center justify-between">
       <p class="text-xs text-gray-500">
         Hosted by <%= event.creator.email %>
       </p>
+      <% if can_edit? %>
+        <%= link_to edit_group_event_path(event.group, event), class: "text-xs text-blue-600 hover:text-blue-800 font-medium" do %>
+          <%= t("event_card.edit") %>
+        <% end %>
+      <% end %>
     </div>
   </div>
 </div>

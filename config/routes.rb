@@ -13,5 +13,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "town_square#index"
 
-  resources :groups, only: [ :index, :show ]
+  resources :groups, only: [ :index, :show ] do
+    resources :events, only: [ :new, :create, :edit, :update ]
+  end
 end

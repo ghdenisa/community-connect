@@ -51,4 +51,8 @@ class EventCard::Component < ApplicationComponent
       "bg-blue-100 text-blue-800"
     end
   end
+
+  def can_edit?
+    helpers.user_signed_in? && helpers.current_user == event.creator
+  end
 end

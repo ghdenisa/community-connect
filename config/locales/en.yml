@@ -63,6 +63,7 @@ en:
     show:
       back_to_groups: "Back to Groups"
       events_title: "Events"
+      create_event: "Create Event"
       total_events:
         zero: "No events"
         one: "1 event"
@@ -70,6 +71,36 @@ en:
       empty_state:
         title: "No events yet"
         description: "This group hasn't created any events yet. Check back later!"
+
+  events:
+    new:
+      title: "Create New Event"
+      subtitle: "Create a new event for %{group}"
+      back_to_group: "Back to Group"
+    edit:
+      title: "Edit Event"
+      subtitle: "Editing %{event}"
+      back_to_group: "Back to Group"
+    create:
+      success: "Event created successfully!"
+    update:
+      success: "Event updated successfully!"
+    form:
+      errors:
+        one: "1 error prevented this event from being saved:"
+        other: "%{count} errors prevented this event from being saved:"
+      title_label: "Event Title"
+      title_placeholder: "e.g., Community Meetup, Workshop, Social Gathering"
+      description_label: "Description"
+      description_placeholder: "What is this event about? What should attendees expect?"
+      starts_at_label: "When does it start?"
+      public_label: "Show this event in the TownSquare"
+      public_description: "Make this event visible to everyone in the community"
+      cancel: "Cancel"
+      submit: "Save Event"
+
+  event_card:
+    edit: "Edit"
 
   devise:
     sessions:

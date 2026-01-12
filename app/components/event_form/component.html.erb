@@ -1,0 +1,59 @@
+<div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+  <%= form_with(model: [group, event], local: true, class: "space-y-6") do |form| %>
+    <!-- Error Messages -->
+    <% if event.errors.any? %>
+      <div class="bg-red-50 border border-red-200 rounded-lg p-4">
+        <h3 class="text-sm font-medium text-red-800 mb-2">
+          <%= t("events.form.errors", count: event.errors.count) %>
+        </h3>
+        <ul class="list-disc list-inside text-sm text-red-700">
+          <% event.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <!-- Title Field -->
+    <div>
+      <%= form.label :title, t("events.form.title_label"), class: "block text-sm font-medium text-gray-700 mb-2" %>
+      <%= form.text_field :title,
+          placeholder: t("events.form.title_placeholder"),
+          class: "w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" %>
+    </div>
+
+    <!-- Description Field -->
+    <div>
+      <%= form.label :description, t("events.form.description_label"), class: "block text-sm font-medium text-gray-700 mb-2" %>
+      <%= form.text_area :description,
+          rows: 4,
+          placeholder: t("events.form.description_placeholder"),
+          class: "w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" %>
+    </div>
+
+    <!-- Starts At Field -->
+    <div>
+      <%= form.label :starts_at, t("events.form.starts_at_label"), class: "block text-sm font-medium text-gray-700 mb-2" %>
+      <%= form.datetime_local_field :starts_at,
+          class: "w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" %>
+    </div>
+
+    <!-- Public Checkbox -->
+    <div class="flex items-start">
+      <div class="flex items-center h-5">
+        <%= form.check_box :public,
+            class: "w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500" %>
+      </div>
+      <div class="ml-3">
+        <%= form.label :public, t("events.form.public_label"), class: "text-sm font-medium text-gray-700" %>
+        <p class="text-xs text-gray-500"><%= t("events.form.public_description") %></p>
+      </div>
+    </div>
+
+    <!-- Actions -->
+    <div class="flex items-center justify-between pt-4">
+      <%= link_to t("events.form.cancel"), group_path(group), class: "text-gray-600 hover:text-gray-900" %>
+      <%= form.submit t("events.form.submit"), class: "px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:ring-4 focus:ring-blue-300" %>
+    </div>
+  <% end %>
+</div>

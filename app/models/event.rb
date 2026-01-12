@@ -6,7 +6,7 @@ class Event < ApplicationRecord
   validates :starts_at, presence: true
 
   scope :public_events, -> { where(public: true) }
-  scope :ordered_by_start_desc, -> { order(starts_at: :desc) }
+  scope :ordered_by_start_desc, -> { order(starts_at: :asc) }
 end
 
 # == Schema Information
