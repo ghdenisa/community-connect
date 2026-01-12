@@ -5,6 +5,6 @@ class TownSquareController < ApplicationController
     @events = Event
       .includes(:group, :creator)
       .public_events
-      .ordered_by_start_desc
+      .by_start_date
   end
 end

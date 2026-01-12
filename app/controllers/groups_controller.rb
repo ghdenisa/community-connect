@@ -7,6 +7,6 @@ class GroupsController < ApplicationController
 
   def show
     @group = Group.find(params[:id])
-    @events = @group.events.ordered_by_start_desc
+    @events = @group.events.by_start_date
   end
 end
