@@ -20,6 +20,14 @@ demo_user = FactoryBot.create(:user,
 )
 puts "✓ Created user: #{demo_user.email}"
 
+puts "Creating other user..."
+other_user = FactoryBot.create(:user,
+  email: "other@user.com",
+  password: "123456",
+  password_confirmation: "123456"
+)
+puts "✓ Created user: #{other_user.email}"
+
 # Define groups with specific data
 puts "\nCreating groups..."
 groups_data = [
@@ -105,7 +113,7 @@ created_groups.each do |group|
   end
 
   puts "\nCreating events for other users..."
-  FactoryBot.create_list(:event, 2, group: group, creator: FactoryBot.create(:user))
+  FactoryBot.create_list(:event, 2, group: group, creator: other_user)
 end
 
 
