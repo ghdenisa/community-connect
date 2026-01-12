@@ -1,0 +1,23 @@
+<div class="space-y-6">
+  <!-- Page Header -->
+  <div class="flex items-center justify-between">
+    <h1 class="text-3xl font-bold text-gray-900"><%= t("groups.index.title") %></h1>
+    <p class="text-gray-600"><%= t("groups.index.subtitle") %></p>
+  </div>
+
+  <!-- Groups List -->
+  <% if @groups.any? %>
+    <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+      <% @groups.each do |group| %>
+        <%= render GroupCard::Component.new(group: group) %>
+      <% end %>
+    </div>
+  <% else %>
+    <!-- Empty State -->
+    <div class="bg-gray-50 border-2 border-dashed border-gray-300 rounded-lg p-12 text-center">
+      <span class="text-6xl">👥</span>
+      <h3 class="mt-4 text-lg font-medium text-gray-900"><%= t("groups.index.empty_state.title") %></h3>
+      <p class="mt-2 text-sm text-gray-500"><%= t("groups.index.empty_state.description") %></p>
+    </div>
+  <% end %>
+</div>

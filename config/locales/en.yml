@@ -49,6 +49,18 @@ en:
         title: "No public events yet"
         description: "Check back later for new community events!"
 
+  groups:
+    index:
+      title: "Groups"
+      subtitle: "Explore and join community groups"
+      events_count:
+        zero: "No events"
+        one: "1 event"
+        other: "%{count} events"
+      empty_state:
+        title: "No groups yet"
+        description: "Check back later for new groups!"
+
   devise:
     sessions:
       new:
