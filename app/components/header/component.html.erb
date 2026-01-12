@@ -11,10 +11,18 @@
         <span class="text-sm text-gray-600">
           <%= helpers.current_user.email %>
         </span>
-        <%= link_to t("components.header.edit_profile"), helpers.edit_user_registration_path,
-            class: "px-4 py-2 text-sm font-medium text-gray-700 hover:text-gray-900" %>
-        <%= button_to t("components.header.sign_out"), helpers.destroy_user_session_path, method: :delete,
-            class: "px-4 py-2 text-sm font-medium text-white bg-red-600 hover:bg-red-700 rounded-md transition-colors" %>
+        <%= render Button::Component.new(
+          text: t("components.header.edit_profile"),
+          href: helpers.edit_user_registration_path,
+          variant: :ghost
+        ) %>
+        <%= render Button::Component.new(
+          text: t("components.header.sign_out"),
+          href: helpers.destroy_user_session_path,
+          as: :button_to,
+          method: :delete,
+          variant: :danger
+        ) %>
       </div>
     </div>
   </div>
